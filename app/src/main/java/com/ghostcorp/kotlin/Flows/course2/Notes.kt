@@ -63,8 +63,17 @@ class Notes {
      *
      *  -- Manual Close
      *
-     *  --
-     *  --
+     *
+     *  -- producer consumer bottlenecks
+     *
+     *  -- bottlenecks
+     *
+     *  -- asynchronous
+     *
+     *  -- Cold
+     *
+     *
+     *
      *
      *
      *

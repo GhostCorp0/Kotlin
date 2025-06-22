@@ -1,6 +1,7 @@
 package com.ghostcorp.kotlin.Flows.course2
 
 import android.os.Bundle
+import android.provider.Settings.Global
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +10,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.ghostcorp.kotlin.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 class FlowsChannelsActivity : AppCompatActivity() {
@@ -30,10 +34,21 @@ class FlowsChannelsActivity : AppCompatActivity() {
 
         }*/
 
-        producer()
+        // Channel example producer receiver
 
-        consumer()
+     /*   producer()
 
+        consumer()*/
+
+        //
+
+        // Streams Example to collect the producer
+        GlobalScope.launch {
+            val data: Flow<Int> = producerTwo()
+            data.collect {
+                Log.d("TAG", it.toString())
+            }
+        }
     }
 
 
@@ -70,6 +85,15 @@ class FlowsChannelsActivity : AppCompatActivity() {
             Log.d("TAG", "consumer: ${channel.receive().toString()} ")
         }
     }
-    ///////
+
+    /////// Streams Example /////////
+
+    fun producerTwo() = flow<Int> {
+        val list = listOf(1,2,3,4,5,6,7,8,9,10)
+        list.forEach{
+            delay(1000)
+            emit(it)
+        }
+    }
 
 }
