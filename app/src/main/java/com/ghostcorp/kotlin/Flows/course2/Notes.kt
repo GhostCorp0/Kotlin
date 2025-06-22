@@ -64,6 +64,7 @@ class Notes {
      *  -- Manual Close
      *
      *  --
+     *  --
      *
      *
      *
