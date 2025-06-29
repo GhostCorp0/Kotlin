@@ -1,1 +1,1 @@
-Kotlin project info.
+Kotlin project info
