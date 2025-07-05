@@ -73,6 +73,77 @@ class Notes {
      *  -- Cold
      *
      *
+     * --- Kotlin Flow Operators -- Terminal - Map, Filter buffer operators ---
+     *
+     *  There are two types of operators terminal and non terminal
+     *
+     *  -- To start a flow we need terminal operators.
+     *
+     *  -- Flow consumption is done with the help of terminal operators like collect is terminal operator and terminal operators has suspend functions.
+     *
+     *
+     *  --  first() will return the first element of flow and similarly there is one toList() which will convert the flow in to a form of list.
+     *
+     *
+     *  --- Non terminal operators --
+     *
+     *  -- for example map() to convert one object into another object.
+     *
+     *  -- producer().map {it * 2}.filter{it < 8}.collect {}
+     *
+     *
+     *  -- Kotlin flow context preservation (flowOn) + Exception Handling (catch)
+     *
+     *
+     *  -- Kotlin Shared Flows
+     *
+     *  -- Mostly flows are of cold nature and this means flows will not produce if they dont have any consumer.
+     *
+     *  -- Every consumer has its own independent flow object.
+     *
+     *  -- replay plays last values which are defined
+     *
+     *
+     *  -- STATE FLOWS ---
+     *
+     *  It holds the latest value and passes to every consumer it maintains the state of the flow.
+     *
+     *  It is of hot nature.
+     *
+     *
+     * private fun producer() : Flow<Int> {
+     *
+     *   val mutableStateFlow = MutableStateFlow(0)
+     *
+     *   GlobalScope.launch {
+     *         delay(2000)
+     *         mutablestateflow.emit(20)
+     *   }
+     *
+     *   return mutableStateFlow
+     * }
+     *
+     *   val result = producer()
+     *
+     *   delay(1000)
+     *
+     *   result.collect {
+     *       //
+     *   }
+     *
+     *   it will store the last value and when someone will collect can get the last value.
+     *
+     *   also consumer can get the last value anytime using (.value) property
+     *
+     *
+     *  ///// LiveData vs StateFlow ////////
+     *
+     *  -- Transformation on Main Thread
+     *
+     *  --  Operators
+     *
+     *  -- Lifecycle Dependent
+     *
      *
      *
      *
