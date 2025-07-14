@@ -29,12 +29,8 @@ fun main() {
     }
 
     //with example
-
     with(Intent()) {
 
     }
-
-
-
 }
 
